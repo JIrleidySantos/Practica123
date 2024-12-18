@@ -9,11 +9,12 @@ package ec.edu.espoch.practicas.clases;
  * @author mundo
  */
 public class Cuenta {
-     protected float saldo;
-        protected int nConsignaciones=0;
-        protected int nRetiros=0;
-        protected float tasaAnual;
-        protected float comiMensual=0;
+
+    protected float saldo;
+    protected int nConsignaciones = 0;
+    protected int nRetiros = 0;
+    protected float tasaAnual;
+    protected float comiMensual = 0;
 
     public Cuenta(float saldo, float tasaAnual) {
         this.saldo = saldo;
@@ -63,6 +64,40 @@ public class Cuenta {
     @Override
     public String toString() {
         return "Cuenta{" + "saldo=" + saldo + ", nConsignaciones=" + nConsignaciones + ", nRetiros=" + nRetiros + ", tasaAnual=" + tasaAnual + ", comiMensual=" + comiMensual + '}';
+    }
+
+    public void consignar(float cantidad) {
+        if (cantidad > 0) {
+            saldo = saldo + cantidad;
+            nConsignaciones++;
+        }
+    
+
+    public boolean retirar(float cantidad) {
+        if (cantidad > 0 && cantidad <= saldo) {
+            saldo = saldo - cantidad;
+            nRetiros++;
+            return true;
+        }
+        return false;
+    }
+
+    public void calcularInteresMensual() {
+        float interesMensual = (tasaAnual / 12) / 100;
+        saldo = saldo + (saldo * interesMensual);
+    }
+
+    public void extractoMensual() {
+        saldo = saldo - comiMensual;
+        calcularInteresMensual();
+    }
+
+    public void imprimir() {
+        System.out.println("Saldo: " + saldo);
+        System.out.println("Número de consignaciones: " + nConsignaciones);
+        System.out.println("Número de retiros: " + nRetiros);
+        System.out.println("Tasa anual: " + tasaAnual);
+        System.out.println("Comisión mensual: " + comiMensual);
     }
 
 }
