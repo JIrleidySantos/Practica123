@@ -72,7 +72,7 @@ public class Cuenta {
             nConsignaciones++;
         }
     
-
+    
     public boolean retirar(float cantidad) {
         if (cantidad > 0 && cantidad <= saldo) {
             saldo = saldo - cantidad;

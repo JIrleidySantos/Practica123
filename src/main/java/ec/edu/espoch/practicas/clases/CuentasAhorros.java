@@ -50,7 +50,7 @@ public class CuentasAhorros extends Cuenta {
     @Override
     public void imprimir() {
         super.imprimir();
-        System.out.println("Cuenta activa: " + cuentaActiva);
+        System.out.println("Cuenta activa : " + cuentaActiva);
     }
 
 }
